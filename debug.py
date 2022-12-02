@@ -9,4 +9,4 @@ engine = create_engine("sqlite:///db/DB.db")
 session_factory = sessionmaker(bind=engine)
 db_session = DBSession(session_factory())
 
-db.queries.create_new_clients(db_session, "23", "232")
+db.queries.create_new_clients(db_session, "23", "2324")
