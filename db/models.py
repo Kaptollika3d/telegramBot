@@ -33,7 +33,7 @@ class Clients(BaseModel):
 class Timetable(BaseModel):
     __tablename__ = 'Timetable'
 
-    day = Column(VARCHAR(255), nullable=False)
+    day_of_week = Column(VARCHAR(255), nullable=False)
     time = Column(VARCHAR(255), nullable=False)
 
     def __repr__(self):
