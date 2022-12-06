@@ -226,4 +226,4 @@ storage_manager
 
 db/migrations/local
 database_data
-.db
+*.db
