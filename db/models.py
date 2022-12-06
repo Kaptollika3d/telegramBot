@@ -44,8 +44,29 @@ client_timetable = Table('client_timetable', Base.metadata,
     Column('timetable_id', Integer(), ForeignKey('Timetable.id'))
     )
 
-class PaidTrain(BaseModel):
+class Payment(BaseModel):
     __tablename__ = 'PaidTrain'
 
     client_id = Column(ForeignKey("Clients.id"), nullable=False)
-    count_paid_train = Column(Integer(), nullable=False) 
+    number_paid_train = Column(Integer(), nullable=False) 
+
+    def __repr__(self) -> str:
+        return f'{self.client_id, self.number_paid_train}'
+
+class Visits(BaseModel):
+    __tablename__ = 'Visits'
+    
+    client_id = Column(ForeignKey("Clients.id"), nullable=False)
+    timetable_id = Column(ForeignKey("Timetable.id"), nullable=False)
+
+    def __repr__(self) -> str:
+        return f'{self.client_id, self.timetable_id}'
+
+class RemainTrain(BaseModel):
+    __tablename__ = "RemainTrain"
+
+    client_id = Column(ForeignKey("Clients.id"), nullable=False)
+    available_train = Column(Integer(), nullable=False, default=0)
+
+    def __repr__(self) -> str:
+        return f'{self.client_id, self.available_train}'
