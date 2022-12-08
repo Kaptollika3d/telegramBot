@@ -37,7 +37,10 @@ class Timetable(BaseModel):
     time = Column(VARCHAR(255), nullable=False)
 
     def __repr__(self):
-        return f'{self.day, self.time}'
+        return f'{self.id, self.day_of_week, self.time}'
+
+    def __str__(self):
+        return f'{self.day_of_week, self.time}'
 
 client_timetable = Table('client_timetable', Base.metadata,
     Column('client_id', Integer(), ForeignKey('Clients.id')),

@@ -31,3 +31,11 @@ def create_new_visit(session: DBSession, client_id, timetable_id):
     newVisit = Visits(client_id=client_id, timetable_id=timetable_id)
     session.add_model(newVisit)
     session.commit_session()
+
+def get_timetable(session: DBSession):
+    timetables = session.query(Timetable.id, Timetable.day_of_week, Timetable.time).all()
+    dict = []
+    for row in timetables:
+        add = (row.id, "{0}, {1}".format(row.day_of_week, row.time))
+        dict.append(add)
+    return dict
