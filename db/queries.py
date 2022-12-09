@@ -39,3 +39,11 @@ def get_timetable(session: DBSession):
         add = (row.id, "{0}, {1}".format(row.day_of_week, row.time))
         dict.append(add)
     return dict
+
+def get_clients_by_time(session: DBSession, time_id):
+    clients = session.query(Clients).filter(Clients.id == time_id).all()
+    dict = []
+    for row in clients:
+        add = (row.id, row.name)
+        dict.append(add)
+    return dict
